@@ -9,7 +9,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-// Функция для копирования файла
+
 long copy_file(const char *source, const char *destination) {
     int src_fd, dest_fd, n;
     char buffer[4096];
@@ -19,7 +19,7 @@ long copy_file(const char *source, const char *destination) {
     src_fd = open(source, O_RDONLY);
     if (src_fd < 0) return -1;
 
-    // Получение прав доступа исходного файла
+    
     if (fstat(src_fd, &stat_buf) < 0) {
         close(src_fd);
         return -1;
@@ -43,7 +43,7 @@ long copy_file(const char *source, const char *destination) {
     close(src_fd);
     close(dest_fd);
 
-    // Применение прав доступа к скопированному файлу
+    
     if (chmod(destination, stat_buf.st_mode) < 0) {
         return -1;
     }
@@ -78,7 +78,7 @@ int main() {
             sprintf(path1, "%s/%s", dir1, dir->d_name);
             sprintf(path2, "%s/%s", dir2, dir->d_name);
 
-             if (access(path2, F_OK) != 0) { // File does not exist in dir2
+             if (access(path2, F_OK) != 0) { 
 		if (n > 0) {
 		    pid_t pid = fork();
 		    if (pid == 0) { // Child process
@@ -89,7 +89,7 @@ int main() {
 		            perror("Copy failed");
 		        }
 		        exit(0);
-                    } else if (pid > 0) { // Parent process
+                    } else if (pid > 0) { 
                         n--;
                         wait(NULL); // Wait for a child to finish
                         n++;
