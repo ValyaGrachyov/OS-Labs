@@ -81,7 +81,7 @@ int main() {
              if (access(path2, F_OK) != 0) { 
 		if (n > 0) {
 		    pid_t pid = fork();
-		    if (pid == 0) { // Child process
+		    if (pid == 0) {
 		        long bytes = copy_file(path1, path2);
 		        if (bytes >= 0) {
 		            printf("PID: %d, Copied: %s, Bytes: %ld\n", getpid(), dir->d_name, bytes);
@@ -91,7 +91,7 @@ int main() {
 		        exit(0);
                     } else if (pid > 0) { 
                         n--;
-                        wait(NULL); // Wait for a child to finish
+                        wait(NULL); 
                         n++;
                     } else {
                         perror("fork failed");
