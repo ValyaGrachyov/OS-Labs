@@ -46,7 +46,7 @@ int main() {
         pid_2 = fork();
         get_pid(pid_2);
         if (pid_2 > 0) {
-            system("ps -x | grep '1.exe'");
+            system("ps -x | grep 'task1.exe'");
         }
     }
 
